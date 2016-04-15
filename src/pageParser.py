@@ -29,10 +29,8 @@ class PageParser:
             print title
             print creations[title]
 
-        f = open('output.txt', 'w')
-        for key, value in creations.iteritems():
-            f.write(value)
-        return
+
+        return creations
 
     def parseSubPage(self,url):
         print 'parsing '+url
@@ -57,7 +55,10 @@ def main():
     argsParser = argparse.ArgumentParser()
     pageParser = PageParser(argsParser)
 
-    pageParser.parseMainPage()
+    creations=pageParser.parseMainPage()
+    f = open('output.txt', 'w')
+    for key, value in creations.iteritems():
+        f.write(value)
 
 
 if __name__ == '__main__':
